@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /*
+    1) Создайте функцию, которая будет вычислять объем и площадь полной поверхности куба (тоже базовая математика, иногда используется в создании анимаций). Эта функция принимает в себя целое число со значением длины ребра куба. Ответ выведите в формате строки, который изображен в примерах.
+
+    Если в функцию попал неправильный аргумент или вычислить значения невозможно - вернуть строку "При вычислении произошла ошибка"
+
+    НЕ ИСПОЛЬЗУЙТЕ ОПЕРАТОР СТЕПЕНИ ** - в онлайн среде браузера он не работает и тесты будут ломаться. Это из-за того, что этот оператор из более нового стандарта, чем тут доступен.
+    */
+    function calculateVolumeAndArea(length){
+        if(typeof(length) !== 'number' || length <= 0 || !Number.isInteger(length)){
+            return 'При вычислении произошла ошибка';
+        }
+        return `Объем куба: ${Math.pow(length, 3)}, площадь всей поверхности: ${Math.pow(length, 2) * 6}`;
+    }
+    /*console.log(calculateVolumeAndArea(1));
+    console.log(calculateVolumeAndArea(15));
+    console.log(calculateVolumeAndArea(15.5));
+    console.log(calculateVolumeAndArea('15'));
+    console.log(calculateVolumeAndArea(-15));*/
+
+    /*
+    Постепенно переходим к более реалистичным задачам :) Вы обнаружите, что там используется все тоже самое.
+
+    Напишите функцию, которая будет определять номер купе по переданному ей номеру места. Наглядно:
+    Функция принимает только целое число от 1 до 36.
+
+    Если переданный аргумент не число, отрицательное или дробное - возвращается сообщение:
+
+    "Ошибка. Проверьте правильность введенного номера места"
+
+    Если число 0 или больше 36, то сообщение: "Таких мест в вагоне не существует"
+    */
+    function getCoupeNumber(num){
+        if(typeof(num) !== "number" || num < 0 || !Number.isInteger(num)){
+            return "Ошибка. Проверьте правильность введенного номера места";
+        } else if(num === 0 || num > 36){
+            return  "Таких мест в вагоне не существует";
+        }
+
+        return Math.ceil(num/4);
+    }
+    /*console.log(getCoupeNumber(33));
+    console.log(getCoupeNumber(7));
+    console.log(getCoupeNumber(300));
+    console.log(getCoupeNumber(0));
+    console.log(getCoupeNumber(7.7));
+    console.log(getCoupeNumber(-10));
+    console.log(getCoupeNumber('Hello'));*/
+
+/*
+    1) Создайте функцию, которая принимает в себя целое число минут и возвращает время в нужном формате строки. (Смотри пример). Обратите внимание на окончание слова "час" - оно меняется в зависимости от цифры. Если вместо аргумента приходит не число, дробное или отрицательное число - функция возвращает строку "Ошибка, проверьте данные"
+
+    Внимание! Давайте пока ограничимся максимум 600ю минутами (10 часов). Так как проверки на большие числа будут раздувать код (33 часа, 31 час, 11 часов и тд). Этого будет достаточно и код будет проверять именно этот промежуток (1 - 10 часов). Но вы можете реализовать и полный скрипт, он тоже должен проходить тесты.
+*/
+    function getTimeFromMinutes(min){
+        if(typeof(min) !== "number" || min < 0 || !Number.isInteger(min)){
+            return  "Ошибка, проверьте данные";
+        }
+
+        const hour = Math.floor(min/60);
+        let frase = '';
+
+        switch (hour){
+            case 0:
+                frase = 'часов';
+                break;
+            case 1:
+                frase = 'час';
+                break;
+            default:
+                frase = 'часа';
+        }
+
+        return  `Это ${hour} ${frase} и ${min%60} минут`;
+    }
+    /*console.log(getTimeFromMinutes(150));
+    console.log(getTimeFromMinutes(50));
+    console.log(getTimeFromMinutes(0));
+    console.log(getTimeFromMinutes(-150));*/
+
+
+    /*
+    Напишите функцию, которая принимает в себя 4 числа и возвращает самое большее из них. Если один из аргументов не является числом или их меньше 4 - возвращается 0. Дробные числа разрешены.
+    */
+    function findMaxNumber(a, b, c, d){
+        if(arguments.length !== 4) return 0;
+        for(let i = 0; i < arguments.length; i++){
+            if(typeof(arguments[i]) !== "number") return 0;
+        }
+
+        return Math.max(a, b, c, d);
+    }
+    /*console.log(findMaxNumber(1, 5, 6.6, 11));
+    console.log(findMaxNumber(1, 5, '6', '10'));*/
+
+
+    /*
+    Создайте функцию, которая будет принимать в себя один аргумент-целое положительное число. Она должна возвращать строку, в которой будут через пробел выведены числа Фибоначчи. Причем, их количество должно быть равно переданному аргументу.
+
+    Если переданный аргумент не число - вернуть пустую строку. Решать без применения рекурсии.
+    */
+    function fib(length) {
+        if(typeof(length) !== 'number' || !Number.isInteger(length)) return "";
+        let row = [];
+        for(let i = 0; i < length; i++){
+            row[i] = i;
+            if(i > 1) {
+                row[i] = row[i - 1] + row[i - 2];
+            }
+        }
+        return row.join(" ");
+    }
+    /*console.log(fib(4));
+    console.log(fib(7));
+    console.log(fib('7'));
+    console.log(fib(1));
+    console.log(fib(0));*/
+</script>
+</body>
+</html>
