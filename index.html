@@ -8,6 +8,129 @@
     <title>Document</title>
 </head>
 <body>
+<script>
+    /*let hamburger;
+    const fries = NaN;
+    const cola = 0;
+    const nuggets = 2;
+    console.log(undefined || false)
+    // if (undefined || false) {
+    if (hamburger && cola || fries === 3 && nuggets) {
+        console.log('Done!')
+    }*/
 
+    // Место для первой задачи
+    function firstTask() {
+        // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
+        const arr = [3, 5, 8, 16, 20, 23, 50];
+        const result = [];
+
+        // Пишем решение вот тут
+        for(let i = 0; i < arr.length; i++){
+            result[i] = arr[i];
+        }
+
+        // Не трогаем
+        return result;
+    }
+
+    // Место для второй задачи
+    function secondTask() {
+        // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
+        const data = [5, 10, 'Shopping', 20, 'Homework'];
+
+        // Пишем решение вот тут
+        for(let i = 0; i <= data.length; i++){
+            if( typeof(data[i]) === 'string'){
+                data[i] += " - done";
+            }else if(typeof(data[i]) === 'number'){
+                data[i] *= 2;
+            }
+        }
+
+        // Не трогаем
+        return data;
+    }
+
+    // Место для третьей задачи
+    function thirdTask() {
+        // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
+        const data = [5, 10, 'Shopping', 20, 'Homework'];
+        const result = [];
+
+        // Пишем решение вот тут
+        for(let i = 0; i < data.length; i++){
+            result[i] = data[data.length - 1 - i];
+        }
+
+        // Не трогаем
+        return result;
+    }
+
+    {
+        const lines = 5;
+        let result = "";
+        // Проверяется именно переменная result, формируйте строку в ней
+        for(let i = 0; i <= lines; i++){
+            for(let k = lines; k > i; k--){
+                result += ' ';
+            }
+            for(let j = 1; j <= i; j++){
+                result = result + "**";
+            }
+            result = result + '*\n';
+        }
+        console.log(result);
+        // *\n ***\n *****\n
+    }
+
+let plogn = 20;
+    function testFn(){
+        let plogn = 11;
+        console.log('test');
+    }
+
+
+
+
+    function getMathResult(num, count) {
+        if(typeof(count) !== 'number' || count <= 0){
+            return num;
+        }
+
+        let result = '' + num;
+        let n = num;
+        for(let i = 0; i < count - 1; i++){
+            n += num;
+            result += '---' + n;
+        }
+        return result;
+    }
+
+    function getMathResult2(num, times) {
+        if (typeof(times) !== 'number' || times <= 0) {
+            return num;
+        }
+
+        let str = '';
+
+        for (let i = 1; i <= times; i++) {
+            if (i === times) {
+                str += `${num * i}`;
+                // Тут без черточек в конце
+            } else {
+                str += `${num * i}---`;
+                // Это тоже самое, что и
+                // str = str + num * i + "---"
+            }
+        }
+
+        return str;
+    }
+
+    console.log(typeof( getMathResult(10, 7) ));
+    console.dir('string')
+
+</script>
 </body>
 </html>
