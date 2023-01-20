@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*3) Задача с собеседований. Напишите функцию reverse, которая принимает в себя строку и возвращает эту строку в обратном порядке.*/
+    const someString = 'This is some strange string';
+
+    function reverse(str) {
+        return (typeof(str) === 'string') ? str.split("").reverse().join("") :  "Ошибка!";
+    }
+
+
+    /*
+    4) Представьте такую реальную ситуацию. У вас есть банкомат, который выдает деньги из двух разных банков в разных валютах. Один банк основной с базовыми валютами, второй дополнительный с прочими валютами:
+
+    const baseCurrencies = ['USD', 'EUR'];
+    const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+    Вам нужно создать главную функцию банкомата availableCurr, которая принимает два аргумента: первый - это массив со всеми доступными валютами из двух банков сразу (сейчас представим, что они не могут повторяться), второй - необязательный аргумент, который указывает ту валюту, которая сейчас закончилась в банкомате. Если массив в первом аргументе пустой - то функция возвращает строку 'Нет доступных валют'. Функция возвращает строку в нужном виде.
+    * */
+    const baseCurrencies = ['USD', 'EUR'];
+    const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+
+    function availableCurr(arr, missingCurr='') {
+        let str = (arr.length === 0) ? 'Нет доступных валют' : 'Доступные валюты:\n';
+
+        arr.forEach(val => {
+            if(val !== missingCurr) str+=val + '\n';
+        });
+
+        return str;
+    }
+
+    console.log(availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY'));
+</script>
+</body>
+</html>

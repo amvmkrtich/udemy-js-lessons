@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*1) Напишите функцию showExperience, которая будет принимать в себя объект со всеми данными и возвращать строку с опытом.*/
+    /*2) Напишите функцию showProgrammingLangs, которая будет принимать в себя объект со всеми данными и возвращать строку в нужном виде.*/
+    /*3) Создайте метод showAgeAndLangs внутри объекта personalPlanPeter. При его вызове метод будет принимать в себя объект и возвращать строку в нужном виде.*/
+
+    const personalPlanPeter = {
+        name: "Peter",
+        age: "29",
+        skills: {
+            languages: ['ru', 'eng'],
+            programmingLangs: {
+                js: '20%',
+                php: '10%'
+            },
+            exp: '1 month'
+        },
+
+        showAgeAndLangs(plan){
+            const {age} = plan;
+            const {languages} = plan.skills;
+            return `Мне ${age} и я владею языками: ${languages.join(' ').toUpperCase()}`;
+        }
+    };
+
+    function showExperience(plan) {
+        const {exp} = plan.skills;
+        return exp;
+    }
+
+    function showProgrammingLangs(plan) {
+        const {programmingLangs} = plan.skills;
+        let result  = '';
+        for(let lang in programmingLangs){
+            result += `Язык ${lang} изучен на ${programmingLangs[lang]} \n`;
+        }
+        return result;
+    }
+
+    console.log(showProgrammingLangs(personalPlanPeter))
+    console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
+
+</script>
+</body>
+</html>
