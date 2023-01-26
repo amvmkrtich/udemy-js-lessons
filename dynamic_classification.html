@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // 1) String
+  console.log(typeof(String(null)));
+  console.log(typeof(String(6)));
+
+  // 2) concat
+  console.log(typeof('' + 8));
+  const fontSize = 25 + 'px';
+
+//  To Numbers
+  console.log(typeof(Number('4')));
+  console.log(typeof(+'5'));
+  console.log((parseInt('15px', 16)));
+
+  // to boolean
+  // Boolean()
+  // false - '', 0, null, NaN, undefined;
+
+  console.log(!!'5'); // true
+  console.log(!!NaN); // false
+
+
+
+  let num = 5; debugger;
+
+  showNum();
+
+  num = 7;
+  function showNum(){
+      console.log(num);
+  }
+
+  showNum();
+  num = 6;
+
+  showNum();
+
+
+</script>
+</body>
+</html>

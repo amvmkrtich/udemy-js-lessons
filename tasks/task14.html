@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    У вас есть список учеников, которые хотят поиграть в игру:
+
+    const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam'];
+    Но команд может быть только 3 по 3 человека. Напишите функцию sortStudentsByGroups, которая принимает в себя массив строк.
+
+    Внутри она сначала сортирует имена по алфавиту. Затем распределяет учеников по 3 человека в 3 группы по алфавитному порядку. Эти группы должны быть массивами. Как итог, функция возвращает новый массив с тремя командами и строкой как 4й элемент.
+    * */
+
+    const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam', 'Mkrtich', 'Arpi', 'Eva', 'Gago', 'Astxik'];
+    function sortStudentsByGroups(arr) {
+        arr.sort();
+        const itemsCount = 3;
+        let result = [];
+        const arrLength = arr.length;
+        for(let i = 0; i < arr.length/itemsCount; i++){
+            result[i] = arr.slice(i*itemsCount, i*itemsCount + itemsCount);
+        }
+
+        const lastItem = result[result.length-1];
+        if(lastItem.length === 0 || lastItem.length === 3){
+            result.push('Оставшиеся студенты: -');
+        }else{
+            result[result.length-1] = 'Оставшиеся студенты: ' + lastItem.join(', ');
+        }
+        return result;
+    }
+
+
+    console.log(sortStudentsByGroups(students));
+</script>
+</body>
+</html>

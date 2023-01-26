@@ -128,8 +128,86 @@ let plogn = 20;
         return str;
     }
 
-    console.log(typeof( getMathResult(10, 7) ));
-    console.dir('string')
+    function fact(n){
+        if(n === 1){
+            return 1;
+        }else{
+            return n * fact(n - 1);
+        }
+    }
+
+    function sum(n){
+        let sum = 0;
+        for(let i = 1; i <= n; i++){
+            sum += i;
+        }
+        return sum;
+    }
+
+    function rowSumOddNumbers(n) {
+        let sum = 0;
+        for(let i = 1; i < n * (n + 1); i+=2){
+            if(i > (n - 2) * (n + 1) + 1){
+                sum += i;
+            }
+        }
+        return sum;
+    }
+
+    function spinWords(text){
+        // debugger;
+        return text.split(' ').map(val => {
+            if(val.length >= 5){
+                return val.split('').reverse().join('');
+            }
+
+            return val;
+        }).join(' ');
+    }
+
+    function findOutlier(integers){
+        if(integers.length < 3) return 'Please try longer array...';
+
+        let sumEvens = 0;
+        for(let i = 0; i < 3; i++){
+            sumEvens += (integers[i]%2 === 0);
+        }
+
+        return integers.filter(val => {
+            if(sumEvens > 1){
+                return val%2 !== 0;
+            }
+
+            return val%2 === 0;
+        } )[0];
+
+    }
+
+    function highAndLow(numbers){
+       const arr = numbers.split(" ").map(val => +val);
+       return `${Math.max(...arr)} ${Math.min(...arr)}`;
+    }
+
+
+    {
+        const now = new Date();
+
+        console.log(now.getFullYear())
+        console.log(now.getMonth())
+        console.log(now.getDate())
+        console.log(now.getTimezoneOffset())
+        console.log(now.getTime())
+    }
+
+    let start = new Date();
+
+    for(let i = 0; i < 100000; i++){
+        let some = i**3;
+    }
+
+    let end = new Date();
+
+    alert(`Raznica ${end - start}`);
 
 </script>
 </body>
