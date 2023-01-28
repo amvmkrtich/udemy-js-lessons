@@ -33,15 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
     tabRealization();
     
     // Timer
-    const deadLine = '2023-03-01';
+    const deadLine = '2023-01-30';
     
     function getTimeRemaining(endTime){
         let now = new Date();
         const t = Date.parse(endTime) - Date.parse(now),
-            days = Math.floor(t/(60 * 60 * 1000 * 24)),
-            hours = Math.floor((t / (1000 * 60 * 60)) % 24),
-            minutes = Math.floor( (t/(1000 * 60)) % 60 ),
-            seconds = Math.floor((t/1000) % 60);
+            days = t > 0 ? Math.floor(t/(60 * 60 * 1000 * 24)) : 0,
+            hours = t > 0 ? Math.floor((t / (1000 * 60 * 60)) % 24) : 0,
+            minutes = t > 0 ? Math.floor( (t/(1000 * 60)) % 60 ) : 0,
+            seconds = t > 0 ? Math.floor((t/1000) % 60) : 0;
+
         return {
             total: t,
             days: days,
@@ -62,6 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
         updateClock();
         function updateClock(){
             const t = getTimeRemaining(endTime);
+
+            // if(t.total <= 0){
+            //     t.days = '0';
+            //     t.hours = '0';
+            //     t.minutes = '0';
+            //     t.seconds = '0';
+            // }
             
             days.innerHTML = t.days < 10 ? '0' + t.days : t.days;
             hours.innerHTML = t.hours < 10 ? '0' + t.hours : t.hours;
@@ -73,4 +81,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setClock('.timer', deadLine);
+    
+    
+    // modal
+    const modalTrigger = document.querySelectorAll('[data-modal]'),
+        modal = document.querySelector('.modal'),
+        modalCloseBtn = document.querySelector('[data-close]');
+    
+    function openModal(){
+        document.body.style.overflowY = 'hidden';
+        modal.classList.add('show');
+        modal.classList.remove('hide');
+        clearInterval(modalTimerId);
+    }
+    function closeModal(){
+        document.body.style.overflowY = '';
+        modal.classList.add('hide');
+        modal.classList.remove('show');
+    }
+    
+    document.addEventListener('click', (e) => {
+        if(e.target.hasAttribute('data-modal')){
+            openModal();
+        }
+
+        if(e.target.matches('.modal')){
+            closeModal();
+        }
+    });
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+        if(e.code === 'Escape' || modal.matches('.show')){
+            closeModal();
+        }
+    });
+
+    const modalTimerId = setTimeout(openModal, 22000);
+
+    function showModalOnScroll(){
+        if(window.pageYOffset + document.documentElement.clientHeight >= document.body.scrollHeight - 5){
+            openModal();
+
+            window.removeEventListener('scroll', showModalOnScroll);
+        }
+    }
+
+    window.addEventListener('scroll', showModalOnScroll);
+
 });
