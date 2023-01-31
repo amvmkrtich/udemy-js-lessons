@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    class Rectangle{
+        constructor(height, width) {
+            this.height = height;
+            this.width = width;
+        }
+
+        calcArea(){
+            return this.height * this.width;
+        }
+    }
+
+    class ColoredREctWithText extends Rectangle{
+        constructor(height, width, text, bgColor){
+            super(height, width);
+            this.text = text;
+            this.bgColor = bgColor;
+        }
+
+        showProps(){
+            console.log(`Our rect's text is "${this.text}" and color is "${this.bgColor}"`);
+        }
+    }
+
+    const div = new ColoredREctWithText(13, 24, 'Lorem ipsum dolor xar', '#f3227c');
+
+    div.showProps();
+    console.log(div.calcArea());
+
+
+
+
+</script>
+</body>
+</html>
