@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Localstorage</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    const params = new URLSearchParams(location.search);
+    console.log(params.getAll('_ijt'))
+
+
+
+
+    localStorage.setItem('number', '5');
+    localStorage.setItem('crash', JSON.stringify({
+        type: 'hideImages',
+        time: 'tomorrow',
+        return: false
+    }));
+
+    const person = {
+        name: 'Eva',
+        age: '8 month',
+        nationality: 'Armenian',
+        bornCountry: 'Russia',
+        parents: {
+            mother: {
+                name: 'Arpi',
+                age: 26
+            },
+            father: {
+                name: 'Mkrtich',
+                age: 32
+            }
+        },
+
+        toString: function (){
+            return JSON.stringify(this, undefined, 4);
+        }
+    }
+    // alert(person)
+</script>
+</body>
+</html>

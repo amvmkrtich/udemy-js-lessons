@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 21</title>
+</head>
+<body>
+<script>
+    const funds = [
+        {amount: -1400},
+        {amount: 2400},
+        {amount: -1000},
+        {amount: 500},
+        {amount: 10400},
+        {amount: -11400}
+    ];
+
+    /*
+    * 1) У вас есть небольшой массив с данными о доходах каждой торговой точки. Напишите функцию getPositiveIncomeAmount, которая принимает этот массив данных и возвращает сумму только положительных значений из каждого объекта. (число)
+
+    Пример:
+
+    getPositiveIncomeAmount(funds) => 13300
+    * */
+
+    const getPositiveIncomeAmount = (data) => {
+        return data.reduce( (sum, curr) => (curr.amount > 0) ? sum += curr.amount : sum, 0);
+        // return data.filter(val => val.amount > 0).reduce((sum, curr) => sum += curr.amount, 0);
+    };
+
+
+    /*
+    * 2) Напишите функцию getTotalIncomeAmount, которая тоже принимает этот массив данных. Если хотя бы один из объектов содержит отрицательное значение поля amount, то функция возвращает сумму всех значений. (число) Если таких значений нет - запускается функция getPositiveIncomeAmount с тем же массивом данных.
+
+    Пример:
+
+    getTotalIncomeAmount(funds) => -500
+    * */
+    const getTotalIncomeAmount = (data) => {
+        if(data.some(val => val.amount < 0)){
+            return data.reduce((sum, curr) => sum += curr.amount, 0);
+        }
+
+        getPositiveIncomeAmount(data);
+    };
+    console.log(getTotalIncomeAmount(funds));
+</script>
+</body>
+</html>

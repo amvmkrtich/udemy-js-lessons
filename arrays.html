@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+</head>
+<body>
+<script>
+    /*const names = ['Anna', 'Manvel', 'Jora', 'Anushavan'];
+
+    const filterted = names.filter(name => name.length < 5);
+    const uppered = names.map(name => name.toUpperCase());
+    const some = names.some(name => typeof(name) === 'number' );
+    const every = names.every(name => typeof(name) === 'string' );
+
+    console.log(filterted)
+    console.log(uppered)
+    console.log(some)
+    console.log(every)
+
+    // reduce
+    const arr = [4, 2, 8, 5];
+
+    const sum = arr.reduce((aggr, val) => aggr + val);
+    console.log(sum)*/
+
+    const obj = {
+        ivan: 'person',
+        ann: 'person',
+        dog: 'animal',
+        cat: 'animal'
+    };
+
+    const personNames = Object.entries(obj)
+        .filter(value => value[1] === 'person')
+        .map(val => val[0]);
+    console.log(personNames)
+</script>
+</body>
+</html>
